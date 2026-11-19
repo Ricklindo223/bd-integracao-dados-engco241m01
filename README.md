@@ -4,17 +4,15 @@
 **Trabalho:** em equipe de até 5 pessoas  
 **Prazo:** 19/11/2026
 
+
 ## Equipe
 
-**Nome do time:** ____________________
+**Nome do time:** SELECT * FROM EU
 
 | Nome | Matrícula | Usuário do GitHub |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Rick Iury Oliveira Andrade | 2417667 | Ricklindo223 |
+
 
 ## O cenário
 
