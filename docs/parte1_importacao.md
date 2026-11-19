@@ -92,9 +92,10 @@ do banco preexistente. Nao declarar aprovacao nos SGBDs sem executar os testes.
 | entradas_mercadoria | 20 | 20 (CI) | 20 (CI) |
 | venda | 33 | 33 (CI) | 33 (CI) |
 
-**Importante:** estes sao totais esperados do arquivo Excel; nao sao
-contagens certificadas dos SGBDs. A tabela deve ser atualizada com
-a saida real das consultas V01 e V02 em sql/04_validacao.sql.
+**Importante:** as contagens acima foram confirmadas pela execucao
+em bancos temporarios PostgreSQL 16 e MySQL 8.0 no GitHub Actions.
+Para demonstracao presencial, os mesmos testes podem ser repetidos
+em instalacoes locais com sql/04_validacao.sql.
 
 Resultado confirmado por consultas executadas no PostgreSQL 16 e MySQL 8.0:
 **fevereiro/2025: 14 itens de venda, 173,22 unidades, R$ 14.093,1704
