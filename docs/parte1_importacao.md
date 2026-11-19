@@ -86,17 +86,17 @@ do banco preexistente. Nao declarar aprovacao nos SGBDs sem executar os testes.
 
 | Tabela | Linhas na planilha | Linhas no PostgreSQL | Linhas no MySQL |
 | --- | ---: | --- | --- |
-| fornecedor | 20 | **PENDENTE DE TESTE** | **PENDENTE DE TESTE** |
-| produtos_filial | 20 | **PENDENTE DE TESTE** | **PENDENTE DE TESTE** |
-| pedido_compra | 29 | **PENDENTE DE TESTE** | **PENDENTE DE TESTE** |
-| entradas_mercadoria | 20 | **PENDENTE DE TESTE** | **PENDENTE DE TESTE** |
-| venda | 33 | **PENDENTE DE TESTE** | **PENDENTE DE TESTE** |
+| fornecedor | 20 | 20 (CI) | 20 (CI) |
+| produtos_filial | 20 | 20 (CI) | 20 (CI) |
+| pedido_compra | 29 | 29 (CI) | 29 (CI) |
+| entradas_mercadoria | 20 | 20 (CI) | 20 (CI) |
+| venda | 33 | 33 (CI) | 33 (CI) |
 
 **Importante:** estes sao totais esperados do arquivo Excel; nao sao
 contagens certificadas dos SGBDs. A tabela deve ser atualizada com
 a saida real das consultas V01 e V02 em sql/04_validacao.sql.
 
-Referencia da auditoria da planilha (a confirmar no banco apos importacao):
+Resultado confirmado por consultas executadas no PostgreSQL 16 e MySQL 8.0:
 **fevereiro/2025: 14 itens de venda, 173,22 unidades, R$ 14.093,1704
 sem arredondar**. Para apresentacao em reais, arredondar para R$ 14.093,17,
 mas preservar a precisao dos dados internamente.
@@ -115,3 +115,19 @@ mas preservar a precisao dos dados internamente.
 8. Registrar evidencias reais de cada teste antes do Pull Request final.
 
 Nenhuma credencial deve entrar no repositório.
+
+## Evidencia de execucao real (GitHub Actions)
+
+Ambos os bancos passaram nos testes automatizados de 19/11/2026:
+https://github.com/Ricklindo223/bd-integracao-dados-engco241m01/actions/runs/44586259937
+
+- PostgreSQL 16: DDL, 122 insercoes, consultas e trigger **aprovados**.
+- MySQL 8.0: DDL, 122 insercoes, consultas e trigger **aprovados**.
+- Todas as quatro colunas de datas testadas ficaram sem valores NULL.
+- A auditoria apontou 99 celulas adicionais sem cabecalho.
+- O teste da trigger inseriu fornecedor provisorio e reverteu a transacao.
+- Os testes usam senhas descartaveis de bancos temporarios do CI,
+  nao credenciais do usuario.
+
+Os bancos do GitHub Actions sao temporarios, nao substituem a conferência
+presencial que o professor possa solicitar no computador.
