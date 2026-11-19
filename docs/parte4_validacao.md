@@ -10,7 +10,7 @@ do que pode ser comprovado pelas notas fiscais e pelo cadastro da loja.
 
 **Referencia inicial da auditoria do Excel:** 14 registros de venda no periodo,
 173,22 unidades e R$ 14.093,1704 antes do arredondamento.
-**Status:** resultados de referencia; confrontar com consultas no banco.
+**Status:** totais confirmados por testes automatizados nos dois bancos em 19/11/2026.
 
 ## 1. Pontos a validar com o cliente
 
@@ -73,7 +73,9 @@ Todas no arquivo sql/04_validacao.sql:
 ## 4. Inconsistencias encontradas na planilha
 
 As quantidades a seguir foram levantadas pela auditoria do arquivo de origem.
-**Nao sao ainda resultados de consultas executadas nos bancos.**
+**Foram posteriormente confirmadas nas consultas automatizadas dos dois bancos**
+para os itens explicitamente cobertos pelos testes (V03, V04, V05, V06,
+V08 e V09). As demais verificacoes constam do SQL e exigem revisao humana.
 Os mesmos casos podem pertencer a mais de uma categoria, portanto nao
 somar os numeros como se fossem registros exclusivos.
 
@@ -112,10 +114,16 @@ nao movimento efetivo, e isso deve ser validado.
 
 - [x] Roteiro e consultas preparados.
 - [x] Excecoes da planilha levantadas para investigacao.
-- [ ] Importacao confirmada no PostgreSQL.
-- [ ] Importacao confirmada no MySQL.
-- [ ] Consultas executadas em ambos SGBDs e resultados registrados.
-- [ ] Trigger testada sem comprometer dados.
+- [x] Importacao confirmada no PostgreSQL 16 via GitHub Actions.
+- [x] Importacao confirmada no MySQL 8.0 via GitHub Actions.
+- [x] Consultas executadas em ambos SGBDs e resultados registrados nos logs.
+- [x] Trigger testada em transacao revertida nos dois SGBDs.
 - [ ] Regras de negocio confirmadas pelo cliente/professor.
 
 Nao marcar os testes como concluidos sem provas de execucao.
+
+
+**Evidencia de teste:** https://github.com/Ricklindo223/bd-integracao-dados-engco241m01/actions/runs/44586259937
+
+Os testes nao substituem a decisao do cliente sobre dados inconsistentes
+nem a confirmacao do professor sobre entrega individual.
